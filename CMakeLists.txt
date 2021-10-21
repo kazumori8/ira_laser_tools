@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(ira_laser_tools)
+add_compile_options(-std=c++14)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -103,6 +104,17 @@ target_link_libraries(laserscan_virtualizer ${catkin_LIBRARIES} ${PCL_LIBRARIES}
 add_dependencies(laserscan_virtualizer ${PROJECT_NAME}_gencfg)
 
 ## Specify libraries to link a library or executable target against
+
+
+
+add_executable(whill_laserscan_multi_merger src/whill_laserscan_multi_merger.cpp)
+target_link_libraries(whill_laserscan_multi_merger ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+## Add cmake target dependencies of the executable/library
+## as an example, message headers may need to be generated before nodes
+add_dependencies(whill_laserscan_multi_merger ${PROJECT_NAME}_gencfg)
+
+
 
 
 #############

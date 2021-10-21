@@ -2,8 +2,14 @@
 Changelog for package ira_laser_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+<<<<<<< HEAD
 1.0.6 (2021-08-11)
 ------------------
+=======
+1.0.6 (2021-08-12)
+------------------
+* add check for PCL version
+>>>>>>> c912880747f2500439543f04b239bbf62800c76f
 * add new mantainer email
 * fix launch before laser scan is available
 * add a try catch for first non valid tf
