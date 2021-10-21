@@ -155,7 +155,14 @@ void LaserscanMerger::scanCallback(const sensor_msgs::LaserScan::ConstPtr &scan,
 	{
 		// Verify that TF knows how to transform from the received scan to the destination scan frame
 		tfListener_.waitForTransform(scan->header.frame_id.c_str(), destination_frame.c_str(), scan->header.stamp, ros::Duration(1));
+<<<<<<< HEAD
+    	projector_.transformLaserScanToPointCloud(scan->header.frame_id, *scan, tmpCloud1, tfListener_, laser_geometry::channel_option::Distance);
+	//タイムスタンプ付き点群を指定された目標フレームに変換する
+	//transformPointCloud(target_frame:目標フレーム, PCL pcin 変換元点群, PCL:pcout 変換先点群)
+	//destination_frameにtmp_Cloud２つを統一していると考えられる。
+=======
 		projector_.transformLaserScanToPointCloud(scan->header.frame_id, *scan, tmpCloud1, tfListener_, laser_geometry::channel_option::Distance);
+>>>>>>> c912880747f2500439543f04b239bbf62800c76f
 		tfListener_.transformPointCloud(destination_frame.c_str(), tmpCloud1, tmpCloud2);
 	}
 	catch (tf::TransformException ex)
@@ -187,12 +194,17 @@ void LaserscanMerger::scanCallback(const sensor_msgs::LaserScan::ConstPtr &scan,
 
 		for (int i = 1; i < clouds_modified.size(); i++)
 		{
+<<<<<<< HEAD
+			pcl::concatenatePointCloud(merged_cloud, clouds[i], merged_cloud);
+			clouds_modified[i] = false;
+=======
 			#if PCL_VERSION_COMPARE(>=, 1, 10, 0)
 				pcl::concatenate(merged_cloud, clouds[i], merged_cloud);
 			#else
 				pcl::concatenatePointCloud(merged_cloud, clouds[i], merged_cloud);
 			#endif
 				clouds_modified[i] = false;
+>>>>>>> c912880747f2500439543f04b239bbf62800c76f
 		}
 
 		point_cloud_publisher_.publish(merged_cloud);
