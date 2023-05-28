@@ -1,3 +1,5 @@
+### added the timestamp as it was not on the topic.
+
 This library includes some tools for laser handling in ROS. At the moment two nodes are available:
 
  - laserscan_multi_merger
